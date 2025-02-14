@@ -1,0 +1,40 @@
+# Code for random walks
+def rand_walk(init_pos, d, reflect=True, p=0.5):  # not sure if this should be p or q
+      num_steps = 0
+      pos = init_pos
+      num_times_reflected = 0
+      while pos < d:
+          step = 2 * (rand_nums.pop() > p) - 1
+          pos += step
+          num_steps += 1
+          if pos < 0:
+              num_times_reflected += 1
+              if reflect:
+                  pos = 0
+              else:
+                  return(False, num_steps, num_times_reflected)
+          if pos == d:
+              return(True, num_steps, num_times_reflected)
+  
+  num_trials = 1000000
+  init_pos = 0
+  reflect = True
+  p = 0.5
+  
+  if not reflect:
+      num_trials *= 10
+  
+  ds = np.arange(1, 29)
+  num_ds = len(ds)
+  
+  trials_success = np.zeros((num_ds, num_trials))
+  trials_length = np.zeros((num_ds, num_trials))
+  trials_num_reflect = np.zeros((num_ds, num_trials))
+  start = time.time()
+  for d_e, d in enumerate(ds):
+      print('Starting d =', d, ' and time elapsed =', time.time() - start)
+      rand_nums = list(np.random.random(10000000))
+      rand_num_counter = 0
+      for e in range(num_trials):
+          trials_success[d_e, e], trials_length[d_e, e], trials_num_reflect[d_e, e] = rand_walk(
+              init_pos, d, reflect=reflect, p=p)
