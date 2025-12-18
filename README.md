@@ -1,5 +1,5 @@
 # Cas13-RNA-structure
-Code to accompany "RNA structure modulates Cas13 activity and enables mismatch detection"
+Code to accompany "RNA structure modulates Cas13 activity and enables mismatch detection" (Larsen & Kimchi et al., 2025).
 
 The python code "combined_analysis_for_upload.py" when run imports data from all other files and generates the figures in the paper. 
 
